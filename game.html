@@ -24,12 +24,23 @@ var game = new Phaser.Game(config);
 
 function preload ()
 {
-	this.load.image('bg', 'texture/bg.jpg')
+	this.load.image('bg', 'texture/bg.png')
+    this.load.image('player', 'texture/player.png')
+    this.load.image('playerHooking', 'texture/playerHooking.png')
 }
 
 function create ()
 {
+    cursors = this.input.keyboard.createCursorKeys();
 	this.add.image(400, 300, 'bg')
+    player = this.add.sprite(400, 300, 'player')
+    player.setScale(.3)
+    playerHooking = this.add.sprite(400, 300, 'playerHooking').setScale(.3)
+    if (cursors.left.isDown)
+{
+        playerHooking.disableBody(true, true)
+}
+
 }
 
 function update ()
